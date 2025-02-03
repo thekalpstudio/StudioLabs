@@ -4,7 +4,7 @@ import { Project } from "@/app/types";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import Image from "next/image";
-import { Clock, Users } from "lucide-react";
+import { Clock } from "lucide-react";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 

@@ -1,5 +1,7 @@
 "use client";
 
+export const dynamic = 'force-dynamic';
+
 import { ProjectCard } from "@/components/project-card";
 import { useEffect, useState } from "react";
 import { Project, ApiResponse } from "./types";

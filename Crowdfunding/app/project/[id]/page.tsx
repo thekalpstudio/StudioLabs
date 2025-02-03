@@ -1,11 +1,16 @@
 "use client";
 
+export const dynamic = 'force-dynamic';
+export const dynamicParams = true; // Tells Next.js this route accepts dynamic params.
+export const fetchCache = 'force-no-store'; // Disables any caching for fetch calls.
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { ProgressRing } from "@/components/ui/progress-ring";
 import { Clock, Copy, Check } from "lucide-react";
 import Image from "next/image";
+import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
 interface Project {
@@ -29,13 +34,15 @@ const API_CONFIG = {
 } as const;
 
 
-export default function ProjectPage({ params }: { params: { id: string } }) {
+export default function ProjectPage() {
+  const { id } = useParams();
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
+    if (!id) return;
     const fetchProject = async () => {
       try {
         const response = await fetch(API_CONFIG.URL, {
@@ -49,7 +56,7 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
             blockchain: API_CONFIG.BLOCKCHAIN,
             walletAddress: API_CONFIG.WALLET_ADDRESS,
             args: {
-              id: params.id
+              id: id
             }
           })
         });
@@ -73,7 +80,7 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
     };
 
     fetchProject();
-  }, [params.id]);
+  }, [id]);
 
   const handleCopy = async () => {
     try {
