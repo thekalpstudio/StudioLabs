@@ -1,13 +1,8 @@
 "use client";
 
-export const dynamic = 'force-dynamic';
-export const dynamicParams = true; // Tells Next.js this route accepts dynamic params.
-export const fetchCache = 'force-no-store'; // Disables any caching for fetch calls.
-
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { ProgressRing } from "@/components/ui/progress-ring";
 import { Clock, Copy, Check } from "lucide-react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
@@ -141,9 +136,6 @@ export default function ProjectPage() {
 
         <div className="space-y-6">
           <Card className="p-6">
-            <div className="mb-6 flex justify-center">
-              <ProgressRing progress={progress} />
-            </div>
             <Progress value={progress} className="h-2" />
             <div className="mt-4 space-y-4">
               <div className="flex justify-between">
