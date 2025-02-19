@@ -183,16 +183,3 @@ func (sc *SmartContract) GetAllBets(ctx kalpsdk.TransactionContextInterface) ([]
 
     return bets, nil
 }
-
-// func main() {
-// 	contract := kalpsdk.Contract{IsPayableContract: false}
-// 	chaincode, err := kalpsdk.NewChaincode(&SmartContract{contract})
-// 	if err != nil {
-// 		fmt.Printf("Error creating smart contract: %s", err)
-// 		return
-// 	}
-
-// 	if err := chaincode.Start(); err != nil {
-// 		fmt.Printf("Error starting smart contract: %s", err)
-// 	}
-// }
